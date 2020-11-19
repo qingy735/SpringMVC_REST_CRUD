@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+
 // 这是修改之后的项目
 @Controller
 public class EmployeeController {
@@ -113,6 +114,16 @@ public class EmployeeController {
         System.out.println(employee);
         employeeDao.save(employee);
         return "redirect:/emps";
+    }
+
+    /**
+     * 测试
+     *
+     * @return
+     */
+    public String success() {
+        System.out.println("success");
+        return "success";
     }
 
 }
