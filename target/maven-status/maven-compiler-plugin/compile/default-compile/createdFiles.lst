@@ -1,7 +1,0 @@
-cn\qingy\controller\EmployeeController.class
-cn\qingy\dao\DepartmentDao.class
-cn\qingy\dao\EmployeeDao.class
-cn\qingy\entities\Department.class
-cn\qingy\controller\HelloController.class
-cn\qingy\entities\Employee.class
-cn\qingy\component\MyStringToEmployeeConverter.class

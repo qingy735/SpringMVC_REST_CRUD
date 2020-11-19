@@ -1,7 +1,11 @@
 package cn.qingy.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
+
+import java.util.Date;
 
 /**
  * @author Qing_Y
@@ -21,7 +25,19 @@ public class Employee {
      */
     private Integer gender;
 
+    @JsonIgnore
     private Department department;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date birth = new Date();
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
 
     public Integer getId() {
         return id;
@@ -78,10 +94,13 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", lastName=" + lastName + ", email="
-                + email + ", gender=" + gender + ", department=" + department
-                + "]";
+        return "Employee{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", gender=" + gender +
+                ", department=" + department +
+                ", birth=" + birth +
+                '}';
     }
-
-
 }
