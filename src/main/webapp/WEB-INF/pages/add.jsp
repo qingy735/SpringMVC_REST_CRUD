@@ -28,8 +28,8 @@
     当作原生的name项
     自动回显隐含模型中某个对象对应的这个属性的值
     -->
-    lastName：<form:input path="lastName"/><br>
-    email：<form:input path="email"/><br>
+    lastName：<form:input path="lastName"/><form:errors path="lastName"/>-->${errorInfo.lastName}<br>
+    email：<form:input path="email"/><form:errors path="email"/>-->${errorInfo.email}<br>
     gender：
     男：<form:radiobutton path="gender" value="1"/><br>
     女：<form:radiobutton path="gender" value="0"/><br>

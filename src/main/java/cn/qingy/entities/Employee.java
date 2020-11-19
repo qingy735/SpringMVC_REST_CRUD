@@ -1,75 +1,84 @@
 package cn.qingy.entities;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+
 public class Employee {
 
-	private Integer id;
-	private String lastName;
+    private Integer id;
 
-	private String email;
-	//1 male, 0 female
-	private Integer gender;
-	
-	private Department department;
-	
-	public Integer getId() {
-		return id;
-	}
+    @Length(min = 6, max = 18)
+    private String lastName;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Email
+    private String email;
 
-	public String getLastName() {
-		return lastName;
-	}
+    /**
+     * 1 male, 0 female
+     */
+    private Integer gender;
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    private Department department;
 
-	public String getEmail() {
-		return email;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Integer getGender() {
-		return gender;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setGender(Integer gender) {
-		this.gender = gender;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public Department getDepartment() {
-		return department;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public Employee(Integer id, String lastName, String email, Integer gender,
-			Department department) {
-		super();
-		this.id = id;
-		this.lastName = lastName;
-		this.email = email;
-		this.gender = gender;
-		this.department = department;
-	}
+    public Integer getGender() {
+        return gender;
+    }
 
-	public Employee() {
-	}
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", lastName=" + lastName + ", email="
-				+ email + ", gender=" + gender + ", department=" + department
-				+ "]";
-	}
-	
-	
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Employee(Integer id, String lastName, String email, Integer gender,
+                    Department department) {
+        super();
+        this.id = id;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.department = department;
+    }
+
+    public Employee() {
+    }
+
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", lastName=" + lastName + ", email="
+                + email + ", gender=" + gender + ", department=" + department
+                + "]";
+    }
+
+
 }

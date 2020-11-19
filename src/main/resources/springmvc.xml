@@ -20,6 +20,11 @@
         </property>
     </bean>
 
+    <!--管理国际化资源文件-->
+    <bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="errors"/>
+    </bean>
+
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven conversion-service="conversionService"/>
 

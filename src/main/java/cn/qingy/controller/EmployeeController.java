@@ -7,10 +7,20 @@ import cn.qingy.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+/**
+ * @author Qing_Y
+ */
 @Controller
 public class EmployeeController {
 
@@ -39,11 +49,27 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
-    public String addEmp(Employee employee) {
+    public String addEmp(@Validated Employee employee, BindingResult bindingResult, Model model) {
         System.out.println(employee);
-        employeeDao.save(employee);
-        // 返回列表页面，重定向到查询所有员工的请求
-        return "redirect:/emps";
+        Map<String, Object> errorsMap = new HashMap<String, Object>();
+        boolean hasErrors = bindingResult.hasErrors();
+        if (hasErrors) {
+            List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+            for (FieldError error : fieldErrors) {
+                System.out.println("错误消息提示：" + error.getDefaultMessage());
+                System.out.println("错误的字段是：" + error.getField());
+                System.out.println(error);
+                System.out.println("--------------------");
+                errorsMap.put(error.getField(), error.getDefaultMessage());
+            }
+            model.addAttribute("errorInfo", errorsMap);
+            System.out.println("有检验错误...");
+            return "add";
+        } else {
+            employeeDao.save(employee);
+            // 返回列表页面，重定向到查询所有员工的请求
+            return "redirect:/emps";
+        }
     }
 
     /**
@@ -81,6 +107,7 @@ public class EmployeeController {
 
     /**
      * 根据id删除员工
+     *
      * @param id
      * @return
      */
@@ -96,6 +123,10 @@ public class EmployeeController {
             Employee employee = employeeDao.get(id);
             model.addAttribute("employee", employee);
         }
+        // 先查出所有部门
+        Collection<Department> departments = departmentDao.getDepartments();
+        model.addAttribute("departments", departments);
+        model.addAttribute("employee", new Employee());
     }
 
     /**
@@ -115,6 +146,7 @@ public class EmployeeController {
 
     /**
      * 快速添加一条员工信息，用于自定义转换器测试
+     *
      * @param employee
      * @return
      */
