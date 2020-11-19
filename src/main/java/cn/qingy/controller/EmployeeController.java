@@ -114,6 +114,14 @@ public class EmployeeController {
         employeeDao.save(employee);
         return "redirect:/emps";
     }
+    
+    /**
+     * 这是一个新加的方法1
+     * @return
+     */
+    public String success1() {
+        return "success";
+    }
 
     /**
      * 这是一个新加的方法2
