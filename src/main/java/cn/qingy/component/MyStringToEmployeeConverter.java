@@ -5,6 +5,9 @@ import cn.qingy.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 
+/**
+ * @author Qing_Y
+ */
 public class MyStringToEmployeeConverter implements Converter<String, Employee> {
 
     @Autowired

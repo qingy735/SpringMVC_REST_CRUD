@@ -3,6 +3,9 @@ package cn.qingy.entities;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
+/**
+ * @author Qing_Y
+ */
 public class Employee {
 
     private Integer id;

@@ -9,6 +9,9 @@ import cn.qingy.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author Qing_Y
+ */
 @Repository
 public class EmployeeDao {
 

@@ -8,6 +8,9 @@ import cn.qingy.entities.Department;
 import org.springframework.stereotype.Repository;
 
 
+/**
+ * @author Qing_Y
+ */
 @Repository
 public class DepartmentDao {
 

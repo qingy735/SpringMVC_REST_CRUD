@@ -1,5 +1,8 @@
 package cn.qingy.entities;
 
+/**
+ * @author Qing_Y
+ */
 public class Department {
 
 	private Integer id;
