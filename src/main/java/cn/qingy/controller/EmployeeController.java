@@ -115,4 +115,12 @@ public class EmployeeController {
         return "redirect:/emps";
     }
 
+    /**
+     * 这是一个新加的方法2
+     * @return
+     */
+    public String success2() {
+        return "success";
+    }
+
 }
