@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-// 这是修改之后的项目
 @Controller
 public class EmployeeController {
 
@@ -80,6 +79,11 @@ public class EmployeeController {
         return "redirect:/emps";
     }
 
+    /**
+     * 根据id删除员工
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/emp/{id}", method = RequestMethod.DELETE)
     public String deleteEmp(@PathVariable("id") Integer id) {
         employeeDao.delete(id);
@@ -109,6 +113,11 @@ public class EmployeeController {
         return "add";
     }
 
+    /**
+     * 快速添加一条员工信息，用于自定义转换器测试
+     * @param employee
+     * @return
+     */
     @RequestMapping("/quickadd")
     public String quickAdd(@RequestParam("empInfo") Employee employee) {
         System.out.println(employee);
@@ -117,7 +126,7 @@ public class EmployeeController {
     }
 
     /**
-     * 测试
+     * 测试GitHub更新
      *
      * @return
      */
